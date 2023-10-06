@@ -1,0 +1,27 @@
+:root {
+    --hue: 223;
+    --bg: hsl(var(--hue), 10%, 90%);
+    --fg: hsl(var(--hue), 10%, 10%);
+    --red: #ff253a;
+    --trans-dur: 0.3s;
+}
+
+#loading_wrapper {
+    background-color: var(--bg);
+    color: var(--fg);
+    /* font: "IRANSans", sans-serif; */
+    font-size: calc(16px + (20 - 16) * (100vw - 320px) / (1280 - 320));
+    height: 100vh;
+    display: grid;
+    position: fixed;
+    width: 100%;
+    z-index: 99999999;
+    place-items: center;
+    transition: background-color var(--trans-dur), color var(--trans-dur);
+}
+
+.preloader {
+    text-align: center;
+    max-width: 20em;
+    width: 100%;
+}

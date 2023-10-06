@@ -1,0 +1,64 @@
+<?php
+
+namespace App\Livewire\Support\Users;
+
+use App\Models\User;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Livewire\Attributes\On;
+use Livewire\Component;
+
+class UsersList extends Component
+{
+    use LivewireAlert;
+
+    public $userId;
+
+
+    public function mount()
+    {
+        //
+    }
+
+
+    public function render()
+    {
+        $users = User::latest()->paginate(10);
+
+
+        return view('livewire.support.users.users-list', [
+            'users' => $users,
+        ])->title('لیست کاربران');
+    }
+
+
+    public function changeStatus(User $user, $user_type)
+    {
+        $user_type = $user_type == 0 ? 1 : 0;
+        $user->update(['user_type' => $user_type]);
+    }
+
+    public function showConfirmDelete($id)
+    {
+        $this->userId = $id;
+
+        $this->alert('question', 'آیا از انجام عملیات مطمئن هستید؟', [
+            'position' => 'center',
+            'toast' => false,
+            'timer' => '',
+            'showConfirmButton' => true,
+            'onConfirmed' => 'confirmed',
+            'confirmButtonText' => 'حذف کنید',
+            'showCancelButton' => true,
+            'onDismissed' => '',
+            'cancelButtonText' => 'خیر, دستم خورد',
+        ]);
+    }
+
+    #[On('confirmed')]
+    public function removeUser()
+    {
+//        check is admin or not
+
+        User::destroy($this->userId);
+    }
+}

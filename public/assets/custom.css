@@ -1,0 +1,17 @@
+
+.text-justify {
+    text-align: justify !important;
+}
+.discount {
+    width: 100%;
+    height: 27px;
+}
+.rooms-img {
+    height: 201px !important;
+}
+.hotels-img {
+    height: 255px !important;
+}
+.carvan-serai-img {
+    object-fit: cover;
+}
