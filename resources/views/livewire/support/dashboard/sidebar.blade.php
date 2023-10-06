@@ -230,7 +230,10 @@
         <li @class(['menu-item','active' => Route::is('dashboard.settings.logs')])>
             <a href="{{ route('dashboard.settings.logs') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-report"></i>
-                <div data-i18n="Page 1">گزارش وضعیت ادمین</div>
+                <div data-i18n="Page 1">گزارش وضعیت ادمین
+                    <br>
+                    <small class="text-info fw-bold">(در دست توسعه...)</small>
+                </div>
             </a>
         </li>
         @endrole
